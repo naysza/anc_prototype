@@ -1,7 +1,7 @@
 import argparse
 import sys
-from anc.utils.io import load_config_yaml
-from anc.experiments.runner import DictConfiguration, DummyANCExperiment
+from anc.core.results_io import load_config_yaml
+from experiments.run_experiment import DictConfiguration, DummyANCExperiment
 
 def main():
     parser = argparse.ArgumentParser(description="ANC Prototype Experiment Runner")

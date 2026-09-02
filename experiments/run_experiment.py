@@ -1,8 +1,8 @@
 import numpy as np
 from typing import Any, Dict
 from anc.core.interfaces import Configuration, Experiment, Result
-from anc.utils.plot import BasicPlotter
-from anc.utils.io import save_result_json
+from anc.core.results_plot import BasicPlotter
+from anc.core.results_io import save_result_json
 import os
 
 class DictConfiguration(Configuration):
