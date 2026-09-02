@@ -1,0 +1,14 @@
+experiment_name: "dummy_anc_experiment"
+version: "1.0"
+signal_params:
+  type: "sine"
+  frequency: 1000
+  sampling_rate: 8000
+  duration: 1.0
+processing_params:
+  filter_type: "lms"
+  mu: 0.01
+output:
+  save_results: true
+  plot_signals: true
+  output_dir: "outputs"

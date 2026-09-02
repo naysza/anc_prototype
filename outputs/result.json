@@ -1,0 +1,7 @@
+{
+    "metrics": {
+        "mse": 0.05,
+        "snr": 15.2
+    },
+    "output_length": 8000
+}
