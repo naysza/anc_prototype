@@ -1,0 +1,21 @@
+# configs/example.yaml
+
+experiment:
+  name: signal_generation_demo
+
+signal:
+  type: sinusoid
+
+  # Sampling
+  fs: 1000
+  duration: 1.0
+
+  # Sinusoid parameters
+  frequency: 100
+  amplitude: 1.0
+
+  # Reproducibility
+  seed: 42
+
+  # Signal metadata
+  name: reference_sinusoid

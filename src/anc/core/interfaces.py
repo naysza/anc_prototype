@@ -1,42 +1,41 @@
-from abc import ABC, abstractmethod
-from typing import Any, Dict, Protocol
+from dataclasses import dataclass
 
-class Configuration(ABC):
-    """Interface for configuration loading and management."""
-    @abstractmethod
-    def load(self, filepath: str) -> None:
-        pass
-    
-    @abstractmethod
-    def get(self, key: str, default: Any = None) -> Any:
-        pass
+import numpy as np
 
-class Signal(ABC):
-    """Interface for discrete-time signals."""
+
+@dataclass
+class Signal:
+    """
+    Common representation for all discrete-time signals
+    used throughout the ANC project.
+    """
+
+    data: np.ndarray
+    fs: float
+    name: str = ""
+
     @property
-    @abstractmethod
-    def data(self) -> Any:
-        pass
-    
+    def n_samples(self) -> int:
+        """Return the number of samples in the signal."""
+        return len(self.data)
+
     @property
-    @abstractmethod
-    def sampling_rate(self) -> float:
-        pass
+    def duration(self) -> float:
+        """Return the signal duration in seconds."""
+        return self.n_samples / self.fs
 
-class Result(ABC):
-    """Interface for representing experiment results."""
-    @abstractmethod
-    def to_dict(self) -> Dict[str, Any]:
-        pass
 
-class Visualization(ABC):
-    """Interface for visualizing signals and results."""
-    @abstractmethod
-    def plot(self, data: Any, title: str, save_path: str = None) -> None:
-        pass
+class Experiment:
+    """
+    Base interface for all experiments in the ANC project.
+    """
 
-class Experiment(ABC):
-    """Interface for a runnable experiment module."""
-    @abstractmethod
-    def run(self, config: Configuration) -> Result:
-        pass
+    def run(self, config: dict):
+        """
+        Run the experiment using the supplied configuration.
+
+        Subclasses must implement this method.
+        """
+        raise NotImplementedError(
+            "Experiment subclasses must implement run()."
+        )
