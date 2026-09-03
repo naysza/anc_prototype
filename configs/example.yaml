@@ -1,21 +1,114 @@
 # configs/example.yaml
 
-experiment:
-  name: signal_generation_demo
+# ============================================================
+# Global/default settings
+# ============================================================
 
-signal:
+signals:
+
+  # ==========================================================
+  # 1. Sinusoidal signal
+  # ==========================================================
+  sinusoid:
+    type: sinusoid
+    fs: 1000
+    duration: 1.0
+    frequency: 100
+    amplitude: 1.0
+    seed: 42
+    name: sinusoid_signal
+
+  # ==========================================================
+  # 2. Multi-tone signal
+  # ==========================================================
+  multi_tone:
+    type: multi_tone
+    fs: 1000
+    duration: 1.0
+
+    frequencies:
+      - 50
+      - 100
+      - 200
+
+    amplitudes:
+      - 1.0
+      - 0.5
+      - 0.25
+
+    seed: 42
+    name: multi_tone_signal
+
+  # ==========================================================
+  # 3. White noise
+  # ==========================================================
+  white_noise:
+    type: white_noise
+    fs: 1000
+    duration: 1.0
+    amplitude: 1.0
+    seed: 42
+    name: white_noise_signal
+
+  # ==========================================================
+  # 4. Colored noise
+  # ==========================================================
+  colored_noise:
+    type: colored_noise
+    fs: 1000
+    duration: 1.0
+    amplitude: 1.0
+    color: pink
+    seed: 42
+    name: colored_noise_signal
+
+  # ==========================================================
+  # 5. Impulse
+  # ==========================================================
+  impulse:
+    type: impulse
+    fs: 1000
+    duration: 1.0
+    amplitude: 1.0
+    name: impulse_signal
+
+  # ==========================================================
+  # 6. Burst signal
+  # ==========================================================
+  burst:
+    type: burst
+    fs: 1000
+    duration: 1.0
+    frequency: 100
+    amplitude: 1.0
+    start_time: 0.2
+    end_time: 0.5
+    name: burst_signal
+
+
+# ============================================================
+# Reference signal x[n]
+# ============================================================
+
+reference:
   type: sinusoid
-
-  # Sampling
   fs: 1000
   duration: 1.0
-
-  # Sinusoid parameters
   frequency: 100
   amplitude: 1.0
-
-  # Reproducibility
   seed: 42
+  name: reference_x
 
-  # Signal metadata
-  name: reference_sinusoid
+
+# ============================================================
+# Desired signal d[n]
+# ============================================================
+
+desired:
+  type: sinusoid
+  fs: 1000
+  duration: 1.0
+  frequency: 100
+  amplitude: 0.8
+  seed: 42
+  name: desired_d
