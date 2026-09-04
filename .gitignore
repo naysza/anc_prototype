@@ -1,1 +1,5 @@
 *.egg-info/
+
+# Python cache
+__pycache__/
+*.py[cod]
