@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
 
-from src.anc.core.interfaces import Signal
-from src.anc.signals.generators import generate_signal
+from anc.core.interfaces import Signal
+from anc.signals.generators import generate_signal
 
 
 def test_generate_sinusoid():
