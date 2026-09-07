@@ -29,7 +29,7 @@ import warnings
 
 import numpy as np
 
-from src.anc.core.interfaces import Signal
+from anc.core.interfaces import Signal
 
 
 # ---------------------------------------------------------------------

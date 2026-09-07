@@ -1,6 +1,6 @@
 import numpy as np
 
-from src.anc.signals.generators import generate_signal
+from anc.signals.generators import generate_signal
 
 
 configs = [

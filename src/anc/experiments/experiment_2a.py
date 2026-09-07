@@ -2,16 +2,16 @@ import argparse
 import sys
 import os
 
-from src.anc.core.interfaces import Experiment, Signal
-from src.anc.signals.generators import generate_signal
-from src.anc.stats.correlation import (
+from anc.core.interfaces import Experiment, Signal
+from anc.signals.generators import generate_signal
+from anc.stats.correlation import (
     calculate_autocorrelation,
     calculate_crosscorrelation,
     construct_wiener_matrix,
     construct_cross_vector
 )
-from src.anc.core.results_plot import plot_correlation
-from src.anc.core.results_io import save_result_json
+from anc.core.results_plot import plot_correlation
+from anc.core.results_io import save_result_json
 
 class CorrelationExperiment(Experiment):
     """Experiment to test Task 2A: Correlation & Statistical Signal Analysis."""

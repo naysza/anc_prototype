@@ -1,0 +1,25 @@
+experiment:
+  name: wiener_baseline
+
+signals:
+  x:
+    type: white_noise
+    fs: 8000
+    duration: 2.0
+    amplitude: 1.0
+    seed: 42
+    name: reference
+
+  d:
+    type: white_noise
+    fs: 8000
+    duration: 2.0
+    amplitude: 0.2
+    seed: 1337
+    name: desired
+
+correlation:
+  filter_length: 8
+
+output:
+  directory: outputs/module2/wiener

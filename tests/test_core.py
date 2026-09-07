@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from src.anc.core.interfaces import Signal, Experiment
+from anc.core.interfaces import Signal, Experiment
 
 
 def test_signal_creation():
