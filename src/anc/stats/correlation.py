@@ -61,12 +61,21 @@ def calculate_crosscorrelation(
     max_lag: int,
 ) -> np.ndarray:
     """
-    Calculate biased sample cross-correlation.
+    Calculate biased sample cross-correlation using the
+    Wiener-filter convention:
 
-    Rxd[k] = E{x[n]d[n-k]}
+        Rxd[k] = E{x[n-k] d[n]}
 
     Returns:
-        k = 0, 1, ..., max_lag - 1
+        Rxd[0], Rxd[1], ..., Rxd[max_lag-1]
+
+    This convention is consistent with the causal FIR model:
+
+        d[n] = sum_k w[k] x[n-k]
+
+    and the Wiener-Hopf equation:
+
+        R w = p
     """
 
     if not isinstance(x, Signal):
@@ -89,9 +98,18 @@ def calculate_crosscorrelation(
 
     _validate_max_lag(max_lag, n_samples)
 
+    # np.correlate(d, x) gives:
+    #
+    #   sum_n d[n] x[n-k]
+    #
+    # at positive lag k.
+    #
+    # This is exactly the Wiener convention:
+    #
+    #   Rxd[k] = E{x[n-k] d[n]}
     correlation = np.correlate(
-        x.data,
         d.data,
+        x.data,
         mode="full",
     )
 
@@ -102,7 +120,6 @@ def calculate_crosscorrelation(
     ]
 
     return rxd / n_samples
-
 
 def construct_wiener_matrix(
     rxx: np.ndarray,

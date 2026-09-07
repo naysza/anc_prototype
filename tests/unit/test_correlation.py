@@ -51,10 +51,19 @@ def test_crosscorrelation_known_signal():
         max_lag=2,
     )
 
+    # Wiener convention:
+    #
+    # Rxd[0] = E{x[n] d[n]}
+    #        = (0*1 + 1*2 + 1*3) / 3
+    #        = 5/3
+    #
+    # Rxd[1] = E{x[n-1] d[n]}
+    #        = (0*0 + 1*1 + 2*1) / 3
+    #        = 1
     expected = np.array(
         [
             5.0 / 3.0,
-            3.0 / 3.0,
+            1.0,
         ]
     )
 
