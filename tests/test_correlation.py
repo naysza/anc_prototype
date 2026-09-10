@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
 
-from src.anc.core.interfaces import Signal
-from src.anc.stats.correlation import (
+from anc.core.interfaces import Signal
+from anc.stats.correlation import (
     calculate_autocorrelation,
     calculate_crosscorrelation,
     construct_wiener_matrix,
